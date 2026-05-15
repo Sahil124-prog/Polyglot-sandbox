@@ -1,0 +1,23 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+
+# TypeScript build output (if you decide to compile to standard JS later)
+dist/
+build/
+
+# Sandbox Execution Folder (CRITICAL)
+# We do not want to track the untrusted code files being generated!
+temp/*
+!temp/.gitkeep
+
+# Environment Variables (Security Best Practice)
+.env
+.env.local
+
+# Docker
+.docker/
+
+# OS generated files
+.DS_Store
+Thumbs.db

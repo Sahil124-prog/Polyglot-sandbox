@@ -8,7 +8,7 @@ case "$COMMAND" in
         mkdir -p temp && chmod 777 temp
         docker pull python:3.9-alpine
         docker pull node:18-alpine
-        echo "✅ Setup complete."
+        echo " Setup complete."
         ;;
     "build")
         echo " Building Sandbox images..."
@@ -16,7 +16,7 @@ case "$COMMAND" in
         
         docker build -t sandbox-python:$COMMIT_HASH -t sandbox-python:latest ./containers/python
         docker build -t sandbox-nodejs:$COMMIT_HASH -t sandbox-nodejs:latest ./containers/nodejs
-        echo "✅ Build complete. Tagged with $COMMIT_HASH"
+        echo " Build complete. Tagged with $COMMIT_HASH"
         ;;
     "test")
         echo " Running Integration Tests..."
@@ -29,11 +29,11 @@ case "$COMMAND" in
         echo " Cleaning up..."
         rm -rf temp/*
         docker system prune -f
-        echo "✅ Clean complete."
+        echo "Clean complete."
         ;;
     "logs")
         echo " Tailing logs (Highlighting Errors)..."
-        # Uses grep to colorize ERROR or CRITICAL words in the output stream
+        
         docker-compose logs -f | grep --color=always -E 'ERROR|CRITICAL|$'
         ;;
     *)
